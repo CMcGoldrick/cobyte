@@ -6,7 +6,10 @@ namespace CoByte
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var easy = Easy.LetterChanges("fun times!");
+
+
+            Console.WriteLine(easy);
         }
     }
 }
