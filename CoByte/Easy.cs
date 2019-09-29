@@ -11,7 +11,7 @@ namespace CoByte
         {
             var nopunc = new string(sen.Where(c => !char.IsPunctuation(c)).ToArray());
 
-            // remember " " this will error out because not char notation > ' '
+            // remember ' " this will error out because not char notation > ' '
             string[] array = nopunc.Split(' ').ToArray();
             int length = 0, longest = 0;
 
@@ -187,6 +187,126 @@ namespace CoByte
             return "completed";
         }
 
+        public static string CheckNums(int num1, int num2)
+        {
+            string result = "true";
+            if (num1 > num2)
+            {
+                result = "false";
+                return result;
+            }
+            if (num1 == num2)
+            {
+                result = "-1";
+                return result;
+            }
+
+            return result;
+        }
+
+        public static string TimeConvert(int num)
+        {
+            int remainder = num % 60;
+            int hours = (num - remainder) / 60;
+
+            return $"{hours}:{remainder}";
+        }
+
+        public static string AlphabetSoup(string str)
+        {
+            string ordered = String.Concat(str.OrderBy(c => c));
+            return str;
+        }
+
+        public static string ABCheck(string str)
+        {
+            string result = "false";
+            char[] array = str.ToCharArray();
+            
+            for (int i = 0; i < array.Length - 4; i++)
+            {
+                if (array[i] == 'a' && (array[i + 4]) == 'b')
+                {
+                    return result = "true";
+                }
+            }
+
+            return result;
+        }
+
+        public static int VowelCount(string str)
+        {
+            int vowels = 0;
+            char[] vow = new char[] { 'a', 'e', 'o', 'u', 'i', 'A', 'E', 'O', 'U', 'I' };
+
+            foreach(var x in str)
+            {
+                if (vow.Contains(x))
+                {
+                    vowels++;
+                }
+            }
+            return vowels;
+        }
+
+        public static int WordCount(string str)
+        {
+            var array = str.Split(" ");
+           
+            return array.Length;
+        }
+
+        public static string ExOh(string str)
+        {
+            string result = "false";
+            int x = 0, o = 0;
+
+            char[] characters = str.ToCharArray();
+
+            foreach(char i in characters)
+            {
+                if (i == 'x')
+                    x++;
+                if (i == 'o')
+                    o++;
+            }
+
+            if (x == o)
+                return result = "true";
+
+            //return str.Count(x => x == 'x') == str.Count(x => x == 'o') ? "true" : "false";
+            return result;
+        }
+
+        public static string Palindrome(string str)
+        {
+            string result = "true";
+
+            //regex to trim a string from punctuation and spaces
+            string trimmed = System.Text.RegularExpressions.Regex.Replace(str, @"[^\w]", string.Empty);
+
+            char[] inputarray = trimmed.ToCharArray();
+            char[] reversed = new char[inputarray.Length];
+            int j = 0;
+            int l = inputarray.Length;
+
+            for(int i = l-1; i >= 0; i--)
+            {
+                reversed[j] = inputarray[i];
+                j++;
+            }
+
+            for (int i = 0; i < l; i++)
+            {
+                if (inputarray[i] != reversed[i])
+                {
+                    return result = "false";
+                }
+            }
+            return result;
+
+            //return inputarray.Equals(reversed) ? "true" : "false";
+        }
     }
 }
- 
+  
