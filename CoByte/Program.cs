@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 
 namespace CoByte
 {
@@ -6,10 +6,6 @@ namespace CoByte
     {
         static void Main(string[] args)
         {
-            var easy = Easy.LetterChanges("fun times!");
-
-
-            Console.WriteLine(easy);
         }
     }
 }

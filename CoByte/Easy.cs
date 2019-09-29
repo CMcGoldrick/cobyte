@@ -15,9 +15,9 @@ namespace CoByte
             string[] array = nopunc.Split(' ').ToArray();
             int length = 0, longest = 0;
 
-            for(var i=0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                if(length < array[i].Length)
+                if (length < array[i].Length)
                 {
                     length = array[i].Length;
                     longest = i;
@@ -34,7 +34,7 @@ namespace CoByte
             int next = num - 1;
             int total = num * next;
 
-            for (var i=0; i <num -2; i++)
+            for (var i = 0; i < num - 2; i++)
             {
                 next -= 1;
                 total *= next;
@@ -69,31 +69,124 @@ namespace CoByte
             {
                 if (x == 'z')
                     nextList.Add('a');
+                else if (x == ' ')
+                    nextList.Add(' ');
                 else if (Char.IsPunctuation(x))
                     nextList.Add(x);
                 else if (x == 'Z')
                     nextList.Add('A');
                 else
-                   nextList.Add((char)(((int)x) + 1));
+                    nextList.Add((char)(((int)x) + 1));
             }
 
-            //List<char> vowelList = new List<char> { 'a', 'e', 'i', 'o', 'u' };
             char[] vowelArray = new char[5] { 'a', 'e', 'i', 'o', 'u' };
 
-            foreach(var x in nextList)
-                Console.WriteLine(x);
+            var nextArray = nextList.Select(c => vowelArray.Contains(c) ? char.ToUpper(c) : c).ToArray();
 
-            //foreach (char x in nextList)
-            //{
-            //    if (vowelArray.Contains(x))
-            //    {
-            //        Char.ToUpper(x);
-            //    }
-            //}
+            string charstring = new string(nextArray);
+            return charstring;
+        }
 
-            return str;
+        public static int SimpleAdding(int num)
+        {
+            int total = 0;
+            int iteration = num;
 
+            for (var i = 0; i < iteration; i++)
+            {
+                total += num;
+                num--;
+            }
+
+            return total;
+        }
+
+        public static string LetterCapitalize(string str)
+        {
+            string[] strArray = str.Split();
+
+            for(var i = 0; i < strArray.Length; i++)
+            {
+                strArray[i] = char.ToUpper(strArray[i][0]) + strArray[i].Substring(1);
+            }
+            string joined = string.Join(" ", strArray);
+            return joined;
+        }
+
+        public static bool SimpleSymbols(string str)
+        {
+            bool test = true;
+            char[] characters = str.ToCharArray();
+            int i = 0;
+
+            //get the type
+            //Console.WriteLine(characters[i].GetType());
+
+            // these are the characters included in the IsPunctuation() method
+            //char[] possibilities = new char[] {  '!', '\\', '\'', '"', '#', '%', '&', '(', ')', '*', ',', '-', '.', '/', ',', ';', '?', '@', '[', ']', '_', '{', '}'};
+       
+            for (i =0; i < characters.Length; i++)
+            {
+                if(char.IsLetter(characters[0]) || char.IsNumber(characters[0]))
+                {
+                    if (characters[1] != '+')
+                    {
+                        test = false;
+                        break;
+                    } 
+                }
+
+                if(char.IsLetter(characters[characters.Length - 1]) || char.IsNumber(characters[characters.Length - 1]))
+                {
+                    if (characters[characters.Length -2] != '+')
+                    {
+                        test = false;
+                        break;
+                    }
+                }
+
+                if(characters[i] != characters[0] && characters[i] != characters[characters.Length - 1])
+                {
+                    if (char.IsLetter(characters[i]) || char.IsNumber(characters[i]))
+                    {
+                        if (characters[i - 1] != '+' || characters[i + 1] != '+')
+                        {
+                            test = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return test;
+
+        }
+
+        public static string RightPoint()
+        {
+            for (int i = 0; i<101; i++)
+            {
+                if(i % 3 == 0 && i % 5 == 0 )
+                {
+                    Console.WriteLine("rightpoint");
+                }
+                else if(i % 3 == 0)
+                {
+                    Console.WriteLine("right");
+                }
+                else if (i % 5 == 0)
+                {
+                    Console.WriteLine("point");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            }
+
+            return "completed";
         }
 
     }
 }
+ 
