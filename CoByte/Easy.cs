@@ -304,9 +304,53 @@ namespace CoByte
                 }
             }
             return result;
-
-            //return inputarray.Equals(reversed) ? "true" : "false";
         }
+
+        public static string ArithGeo(int[] arr)
+        {
+            int l = arr.Length, j = 1;
+            bool aritmethic = true, geometric = true;
+            string returnString = String.Empty;
+            int difference = arr[1] - arr[0], multiplication = arr[1] / arr[0]; ;
+
+            for(int i = 0; i<l-1; i++)
+            {
+                if(arr[j] - arr[i] != difference)
+                {
+                    aritmethic = false;
+                }
+                if(arr[j] / arr[i] != multiplication)
+                {
+                    geometric = false;
+                }
+                j++;
+            }
+
+            if(aritmethic) { returnString = "Arithmetic"; }
+            else if(geometric) { returnString = "Geometric"; }
+            else { returnString = "-1"; }
+
+            return returnString;
+        }
+
+        public static string ArrayAdditionI(int[] arr)
+        {
+            int largest = arr.Max();
+            int index = arr.ToList().IndexOf(largest);
+            List<int> countList = arr.ToList();
+            countList.RemoveAt(index);
+
+
+
+
+            string returnString = String.Empty;
+
+
+
+            return returnString;
+        }
+
+
     }
 }
   

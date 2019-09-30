@@ -6,7 +6,7 @@ namespace CoByte
     {
         static void Main(string[] args)
         {
-            var easy = Easy.Palindrome("never odd or even");
+            var easy = Easy.ArrayAdditionI(new int[] { 3, 5, -1, 8, 12 });
 
             Console.WriteLine(easy);
         
